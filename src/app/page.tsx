@@ -35,36 +35,42 @@ export default function HomePage() {
       title: "Emergency Lockout",
       body: "Home, office, and vehicle lockouts 24/7. Non-destructive entry whenever possible — fast arrival across Waco and Central Texas.",
       link: "/services/emergency-lockout",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faLock,
       title: "Rekey & Lock Change",
       body: "Rekey existing hardware or install new locks after a move, lost keys, or tenant turnover — one set of keys that actually work.",
       link: "/services/rekey-lock-change",
+      image: "/pages/home/services/service-2.jpg",
     },
     {
       icon: faWrench,
       title: "Smart Lock Installation",
       body: "Keypad, Wi-Fi, and app-enabled locks installed and configured correctly for homes and rentals — codes, batteries, and walkthrough included.",
       link: "/services/smart-locks",
+      image: "/pages/home/services/service-3.jpg",
     },
     {
       icon: faCar,
       title: "Car Keys & Fobs",
       body: "Cut and program automotive keys and fobs on-site for most makes — often faster and less expensive than the dealership.",
       link: "/services/car-keys",
+      image: "/pages/home/services/service-4.jpg",
     },
     {
       icon: faBuildingShield,
       title: "Commercial Access Control",
       body: "Door hardware, credentials, and access updates for offices, retail, and multi-unit properties — after-hours options available.",
       link: "/services/commercial-access",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faVault,
       title: "Safe Services",
       body: "Safe opening, combination changes, and relocation help for home and business safes — careful work that prioritizes your contents.",
       link: "/services/safe-services",
+      image: "/pages/home/services/service-2.jpg",
     },
   ];
 
@@ -180,13 +186,10 @@ export default function HomePage() {
 
   return (
     <main className={styles.pageWrapper}>
-
       <WelcomePage />
-
       <TrustBar
         headline="Waco's trusted locksmith — licensed, bonded, insured, and 24/7 ready"
       />
-
       <div className={styles.section}>
         <ImpactMetrics
           title="Numbers That Speak for Us"
@@ -194,14 +197,21 @@ export default function HomePage() {
           cityName="Waco"
         />
       </div>
-
+      <CTABanner
+        headline="Locked Out? Keys Sorted Fast."
+        subline="24/7 lockouts, rekeys, and hardware upgrades — damage-free entry whenever possible."
+        primaryText="Call (254) 820-2020"
+        primaryLink="tel:+12548202020"
+        secondaryText="Emergency Dispatch"
+        secondaryLink="/contact"
+        imageSrc="/pages/home/welcome/hero-main.jpg"
+      />
       <div className={styles.section}>
         <ServiceCardComponent
           heading="Complete Locksmith Services for Home & Business"
           cards={services}
         />
       </div>
-
       <div className={styles.section}>
         <WhyChooseUs
           cityName="Waco"
@@ -209,7 +219,6 @@ export default function HomePage() {
           title="What Makes Keyline Locksmith Different"
         />
       </div>
-
       <div className={styles.section}>
         <Variant4
           title="Request Service or a Free Quote"
@@ -219,28 +228,15 @@ export default function HomePage() {
           formVariant={2}
         />
       </div>
-
       <div className={styles.section}>
         <ProcessTimeline steps={processSteps} />
       </div>
-
       <div className={styles.section}>
         <Testimonials testimonials={reviews} />
       </div>
-
       <div className={styles.section}>
         <GuaranteeSection />
       </div>
-
-      <CTABanner
-        headline="Locked Out? Keys Lost? We're Ready Right Now."
-        subline="24/7 emergency response across Waco, Hewitt, Woodway, Temple, and all of Central Texas. Flat-rate pricing. Workmanship Guaranteed."
-        primaryText="Call (254) 820-2020"
-        primaryLink="tel:+12548202020"
-        secondaryText="Book Online"
-        secondaryLink="/contact"
-      />
-
       <div className={styles.section}>
         <LocalServiceAreas
           cityName="Waco"
@@ -249,14 +245,12 @@ export default function HomePage() {
           title="Serving All of Central Texas"
         />
       </div>
-
       <div className={styles.section}>
         <WhatToExpect
           sectionTitle="Every Service Call, Every Time"
           expectations={expectations}
         />
       </div>
-
       <div className={styles.section}>
         <FAQ
           cityName="Waco"
@@ -264,11 +258,9 @@ export default function HomePage() {
           title="Locksmith Questions — Answered Straight"
         />
       </div>
-
       <div className={styles.section}>
         <BlogPreviewGrid />
       </div>
-
     </main>
   );
 }

@@ -19,7 +19,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Emergency',
     date:     'July 3, 2026',
     readTime: 6,
-    imageSrc: '/pages/blogs/heat-pump.jpg',
+    imageSrc: '/pages/home/services/service-1.jpg',
     imageAlt: 'What to do first when locked out — Waco TX locksmith guide',
     featured: true,
   },
@@ -30,7 +30,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Security',
     date:     'June 24, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/energy-savings.jpg',
+    imageSrc: '/pages/home/welcome/after.jpg',
     imageAlt: 'Rekey vs replace locks guide for Waco TX homeowners',
   },
   {
@@ -40,7 +40,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Smart Locks',
     date:     'June 15, 2026',
     readTime: 8,
-    imageSrc: '/pages/blogs/ac-replacement.jpg',
+    imageSrc: '/pages/home/welcome/hero-main.jpg',
     imageAlt: 'Smart locks for rental properties in Texas guide',
   },
 ];

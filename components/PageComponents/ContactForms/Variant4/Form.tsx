@@ -1,6 +1,6 @@
 // components/PageComponents/ContactForms/Variant4/Form.tsx
-// FIXED: Added useTrackEvent â€” fires:
-//   - 'click'       when the user advances from Step 1 â†’ Step 2 (service selected)
+// FIXED: Added useTrackEvent — fires:
+//   - 'click'       when the user advances from Step 1 → Step 2 (service selected)
 //   - 'form_submit' after a successful submission on Step 2
 //   Both use 'spot' as section for per-placement attribution in the admin dashboard.
 'use client';
@@ -31,7 +31,7 @@ const SERVICES = [
   { icon: faBolt,          label: 'Emergency / 24/7',      sub: 'Urgent lockout or security' },
 ];
 
-const BUDGET_LABELS = ['Under $500', '$500â€“$1,500', '$1,500â€“$5,000', '$5,000â€“$10,000', '$10,000+'];
+const BUDGET_LABELS = ['Under $500', '$500–$1,500', '$1,500–$5,000', '$5,000–$10,000', '$10,000+'];
 
 const slideVariants = {
   enter:  (dir: number) => ({ x: dir > 0 ? 50 : -50, opacity: 0 }),
@@ -56,7 +56,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
     setError(''); setDir(1); setStep(2);
     trackEvent({
       eventType:    'click',
-      elementLabel: `Variant4 Continue â€” ${selectedService}`,
+      elementLabel: `Variant4 Continue — ${selectedService}`,
       section:      spot,
       serviceType:  selectedService,
     });
@@ -107,7 +107,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
           <motion.div className={styles.header}
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <span className={styles.eyebrow}>Get Help Now Â· {cityName}, TX</span>
+            <span className={styles.eyebrow}>Get Help Now · {cityName}, TX</span>
             <h2 className={styles.title}>{title}</h2>
           </motion.div>
         )}
