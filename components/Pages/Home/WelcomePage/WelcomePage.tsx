@@ -1,12 +1,9 @@
-// _archetype-library/hero-c-map-anchored/Component.tsx
-//
-// Hero C: Map-Anchored — left copy, right pure CSS/SVG service-area map graphic.
-// Center pin, satellite pins at x/y %, pulsing radius rings. No Mapbox.
+// Locksmith Hero C — Night city blocks + key hub + amber response ring
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { PhoneIcon, ChevronIcon, CheckIcon, PinIcon } from './_shared/icons';
+import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
 function ServiceAreaMap({
@@ -19,79 +16,133 @@ function ServiceAreaMap({
   coverageLabel?: string;
 }) {
   return (
-    <div className={styles.mapCard} role="img" aria-label={`Service area map centered on ${mapCenterLabel}`}>
-      {/* Stylized map background — grid + soft terrain blobs */}
-      <svg className={styles.mapSvg} viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <div
+      className={`${styles.mapCard} ${styles.nightMap}`}
+      role="img"
+      aria-label={`Service area map centered on ${mapCenterLabel}`}
+    >
+      <svg
+        className={styles.mapSvg}
+        viewBox="0 0 400 320"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
         <defs>
-          <radialGradient id="mapGlow" cx="50%" cy="48%" r="55%">
-            <stop offset="0%" stopColor="rgba(249, 115, 22, 0.14)" />
-            <stop offset="55%" stopColor="rgba(249, 115, 22, 0.04)" />
+          <radialGradient id="lockNightGlow" cx="50%" cy="48%" r="55%">
+            <stop offset="0%" stopColor="rgba(234, 179, 8, 0.16)" />
+            <stop offset="50%" stopColor="rgba(234, 179, 8, 0.05)" />
             <stop offset="100%" stopColor="rgba(0, 0, 0, 0)" />
           </radialGradient>
-          <pattern id="mapGrid" width="28" height="28" patternUnits="userSpaceOnUse">
-            <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.045)" strokeWidth="1" />
-          </pattern>
+          <linearGradient id="lockBlockLit" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0.015)" />
+          </linearGradient>
         </defs>
 
-        <rect width="400" height="320" fill="url(#mapGrid)" />
-        <rect width="400" height="320" fill="url(#mapGlow)" />
+        {/* Deep night wash */}
+        <rect width="400" height="320" fill="rgba(8, 10, 18, 0.55)" />
+        <rect width="400" height="320" fill="url(#lockNightGlow)" />
 
-        {/* Abstract road traces */}
-        <path
-          d="M -10 80 Q 100 60 180 120 T 410 90"
-          fill="none"
-          stroke="rgba(255,255,255,0.07)"
-          strokeWidth="3"
-        />
-        <path
-          d="M 40 340 Q 120 200 220 210 T 420 160"
-          fill="none"
-          stroke="rgba(255,255,255,0.05)"
-          strokeWidth="2.5"
-        />
-        <path
-          d="M -20 200 Q 140 180 200 40 T 360 -10"
-          fill="none"
-          stroke="rgba(255,255,255,0.04)"
-          strokeWidth="2"
-        />
+        {/* City street grid */}
+        <g stroke="rgba(255,255,255,0.07)" strokeWidth="1.5" fill="none">
+          <line x1="0" y1="70" x2="400" y2="70" />
+          <line x1="0" y1="130" x2="400" y2="130" />
+          <line x1="0" y1="190" x2="400" y2="190" />
+          <line x1="0" y1="250" x2="400" y2="250" />
+          <line x1="60" y1="0" x2="60" y2="320" />
+          <line x1="140" y1="0" x2="140" y2="320" />
+          <line x1="220" y1="0" x2="220" y2="320" />
+          <line x1="300" y1="0" x2="300" y2="320" />
+          <line x1="360" y1="0" x2="360" y2="320" />
+        </g>
 
-        {/* Soft district shapes */}
-        <ellipse cx="120" cy="90" rx="70" ry="48" fill="rgba(255,255,255,0.025)" />
-        <ellipse cx="300" cy="230" rx="85" ry="55" fill="rgba(255,255,255,0.02)" />
-        <ellipse cx="280" cy="80" rx="50" ry="36" fill="rgba(249,115,22,0.04)" />
+        {/* Building blocks */}
+        <rect x="72" y="82" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.08)" />
+        <rect x="152" y="82" width="56" height="38" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" />
+        <rect x="232" y="82" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.08)" />
+        <rect x="72" y="142" width="56" height="38" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" />
+        <rect x="152" y="142" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(234,179,8,0.15)" />
+        <rect x="232" y="142" width="56" height="38" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" />
+        <rect x="312" y="142" width="40" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.07)" />
+        <rect x="72" y="202" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.07)" />
+        <rect x="152" y="202" width="56" height="38" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" />
+        <rect x="232" y="202" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.07)" />
+
+        {/* Window dots on blocks */}
+        <g fill="rgba(234, 179, 8, 0.35)">
+          <circle cx="86" cy="94" r="1.5" />
+          <circle cx="98" cy="94" r="1.5" />
+          <circle cx="110" cy="94" r="1.5" />
+          <circle cx="86" cy="106" r="1.5" />
+          <circle cx="98" cy="106" r="1.5" />
+          <circle cx="246" cy="154" r="1.5" />
+          <circle cx="258" cy="154" r="1.5" />
+          <circle cx="270" cy="154" r="1.5" />
+          <circle cx="86" cy="214" r="1.5" />
+          <circle cx="98" cy="214" r="1.5" />
+          <circle cx="246" cy="214" r="1.5" />
+          <circle cx="258" cy="214" r="1.5" />
+        </g>
+
+        {/* Amber response ring (static SVG) */}
+        <circle
+          cx="200"
+          cy="160"
+          r="78"
+          fill="none"
+          stroke="rgba(234, 179, 8, 0.28)"
+          strokeWidth="1.5"
+          strokeDasharray="6 5"
+          className={styles.responseRingSvg}
+        />
+        <circle
+          cx="200"
+          cy="160"
+          r="52"
+          fill="none"
+          stroke="rgba(234, 179, 8, 0.4)"
+          strokeWidth="1.25"
+        />
       </svg>
 
-      {/* Pulsing coverage rings (center) */}
-      <div className={styles.rings} aria-hidden="true">
+      {/* Amber response rings (CSS pulse) */}
+      <div className={`${styles.rings} ${styles.amberRings}`} aria-hidden="true">
         <span className={`${styles.ring} ${styles.ring1}`} />
         <span className={`${styles.ring} ${styles.ring2}`} />
         <span className={`${styles.ring} ${styles.ring3}`} />
       </div>
 
-      {/* Center hub pin */}
-      <div className={styles.centerPin}>
-        <div className={styles.centerPinIcon}>
-          <PinIcon size={20} />
+      {/* Key-shaped hub pin */}
+      <div className={`${styles.centerPin} ${styles.keyHub}`}>
+        <div className={styles.keyPinIcon} aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="9" cy="9" r="4.5" stroke="currentColor" strokeWidth="2" />
+            <path
+              d="M12.5 11.5 L20 19 M17 16 L20 16 L20 19"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
         <span className={styles.centerLabel}>{mapCenterLabel}</span>
       </div>
 
-      {/* Satellite pins */}
       {mapPins.map((pin) => (
         <div
           key={`${pin.label}-${pin.x}-${pin.y}`}
           className={styles.satPin}
           style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
         >
-          <span className={styles.satDot} />
+          <span className={`${styles.satDot} ${styles.amberDot}`} />
           <span className={styles.satLabel}>{pin.label}</span>
         </div>
       ))}
 
       {coverageLabel && (
-        <div className={styles.coverageBadge}>
-          <span className={styles.coverageDot} />
+        <div className={`${styles.coverageBadge} ${styles.amberBadge}`}>
+          <span className={`${styles.coverageDot} ${styles.amberDot}`} />
           {coverageLabel}
         </div>
       )}
@@ -100,83 +151,27 @@ function ServiceAreaMap({
 }
 
 export default function WelcomePage() {
-const badgeText = 'Waco\'s Most Trusted Locksmith — Since 2005';
-const headlineLines = [
-  'Locked Out.',
-  'Keys Lost.',
-];
-const headlineAccent = 'Keyline Locksmith.';
-const subheadline = '24/7 Lockouts · Locks · Keys · Security. Flat-rate pricing. Fast emergency response. Workmanship Guaranteed. Serving Waco and Central Texas with licensed, bonded locksmiths.';
-const primaryCta = { label: 'Call (254) 820-2020', href: 'tel:+12548202020' };
-const secondaryCta = { label: 'Get Help Now', href: '/contact' };
-const chips = [
-  '24/7 Emergency',
-  'No Contracts',
-  'Licensed Locksmith',
-  '20+ Yrs Local',
-  'Workmanship Guaranteed',
-];
-const stats = [
-  {
-    "value": "500+",
-    "label": "Jobs Done"
-  },
-  {
-    "value": "4.9 ★",
-    "label": "Rating"
-  },
-  {
-    "value": "15+",
-    "label": "Years Local"
-  },
-  {
-    "value": "1-Yr",
-    "label": "Warranty"
-  }
-];
-const meterTarget = 72;
-const meterTopLabel = "Priority";
-const meterMidLabel = "Active";
-const meterBotLabel = "Standby";
-const particleColor = '#eab308';
-const beforeImageSrc = '/pages/home/welcome/before.jpg';
-const afterImageSrc = '/pages/home/welcome/after.jpg';
-const beforeLabel = "Locked out";
-const afterLabel = "New keys";
-const mapCenterLabel = 'Service HQ';
-const mapPins = [
-  { label: 'Waco', x: 42, y: 48 },
-  { label: 'Temple', x: 68, y: 62 },
-  { label: 'Killeen', x: 58, y: 72 },
-];
-const coverageLabel = 'Central Texas coverage';
-const materials = [
-  { name: "Lockout", swatch: "#eab308", imageSrc: "/pages/home/welcome/mat-1.jpg" },
-  { name: "Rekey", swatch: "#facc15", imageSrc: "/pages/home/welcome/mat-2.jpg" },
-  { name: "Smart Lock", swatch: "#ca8a04", imageSrc: "/pages/home/welcome/mat-3.jpg" },
-  { name: "Commercial", swatch: "#fde047", imageSrc: "/pages/home/welcome/mat-1.jpg" },
-  { name: "Auto*", swatch: "#a16207", imageSrc: "/pages/home/welcome/mat-2.jpg" },
-  { name: "Safe*", swatch: "#713f12", imageSrc: "/pages/home/welcome/mat-3.jpg" }
-];
-const quote = "Midnight lockout, no door damage, fair price. Rekeyed the whole house the next day.";
-const authorName = "Alex U.";
-const authorMeta = "Emergency lockout · Waco";
-const rating = 5;
-const schematicLabel = "Keyline schematic";
-const gauges = [
-  { label: "Calls", value: "11k+" },
-  { label: "Rating", value: "4.9 ★" },
-  { label: "ETA", value: "Fast" },
-  { label: "24/7", value: "Yes" }
-];
-const toggles = [
-  { label: "Emergency ready", on: true },
-  { label: "Night dispatch", on: true },
-  { label: "Fleet online", on: true }
-];
-const textureSrc = '/pages/home/welcome/hero-main.jpg';
-const textureAlt = 'Texture';
-const accentWord = "Keyline";
+  const badgeText = "Waco's Most Trusted Locksmith — Since 2005";
+  const headlineLines = ['Locked Out.', 'Keys Lost.'];
+  const headlineAccent = 'Keyline Locksmith.';
+  const subheadline =
+    '24/7 Lockouts · Locks · Keys · Security. Flat-rate pricing. Fast emergency response. Workmanship Guaranteed. Serving Waco and Central Texas with licensed, bonded locksmiths.';
+  const primaryCta = { label: 'Call (254) 820-2020', href: 'tel:+12548202020' };
+  const secondaryCta = { label: 'Get Help Now', href: '/contact' };
+  const chips = [
+    '24/7 Emergency',
+    'No Contracts',
+    'Licensed Locksmith',
+    '20+ Yrs Local',
+    'Workmanship Guaranteed',
+  ];
+  const mapCenterLabel = 'Service HQ';
+  const mapPins = [
+    { label: 'Waco', x: 42, y: 48 },
+    { label: 'Temple', x: 68, y: 62 },
+    { label: 'Killeen', x: 58, y: 72 },
+  ];
+  const coverageLabel = 'Central Texas coverage';
 
   return (
     <section className={styles.hero} aria-label="Hero">
@@ -201,7 +196,10 @@ const accentWord = "Keyline";
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {headlineLines.map((line, i) => (
-              <React.Fragment key={i}>{line}<br /></React.Fragment>
+              <React.Fragment key={i}>
+                {line}
+                <br />
+              </React.Fragment>
             ))}
             <span className={styles.accentLine}>{headlineAccent}</span>
           </motion.h1>

@@ -389,3 +389,89 @@
 }
 
 /* end identity layer */
+
+/* === HERO PATTERN UNIQUENESS — locksmith-template === */
+.hero {
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: repeating-linear-gradient(4deg, transparent, transparent 14px, rgba($orange, 0.03) 14px, rgba($orange, 0.03) 15px),
+      repeating-linear-gradient(94deg, transparent, transparent 14px, rgba($white, 0.02) 14px, rgba($white, 0.02) 15px) !important;
+    background-size: auto !important;
+    opacity: 0.85 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(ellipse 50% 40% at 70% 19%, rgba($orange, 0.082), transparent 70%), radial-gradient(ellipse 40% 50% at 83% 65%, rgba($white, 0.03), transparent 65%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+}
+/* end hero pattern */
+
+/* === MAP VISUAL LANGUAGE — locksmith night city / key hub / amber rings === */
+.nightMap {
+  border-color: rgba(234, 179, 8, 0.28) !important;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(234, 179, 8, 0.06), transparent 70%),
+    linear-gradient(180deg, rgba(8, 10, 18, 0.4) 0%, rgba(0, 0, 0, 0.15) 100%),
+    $obsidian !important;
+}
+
+.amberRings {
+  .ring {
+    border-color: rgba(234, 179, 8, 0.5) !important;
+  }
+  .ring2 {
+    border-color: rgba(234, 179, 8, 0.32) !important;
+  }
+  .ring3 {
+    border-color: rgba(234, 179, 8, 0.18) !important;
+  }
+}
+
+.keyHub {
+  .keyPinIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #facc15, #eab308);
+    box-shadow:
+      0 6px 22px rgba(234, 179, 8, 0.55),
+      0 0 0 4px rgba(234, 179, 8, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $obsidian;
+  }
+}
+
+.amberDot {
+  background: #eab308 !important;
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.6) !important;
+}
+
+.amberBadge {
+  border-color: rgba(234, 179, 8, 0.35) !important;
+}
+
+.responseRingSvg {
+  animation: lockResponseSpin 18s linear infinite;
+  transform-origin: 200px 160px;
+}
+
+@keyframes lockResponseSpin {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 120;
+  }
+}
+

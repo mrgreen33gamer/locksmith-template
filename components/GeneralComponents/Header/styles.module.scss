@@ -195,3 +195,20 @@
 }
 
 /* end identity layer */
+
+/* === HEADER PATTERN UNIQUENESS — locksmith-template === */
+.header,
+.shell,
+.bar,
+.navShell,
+.root {
+  // best-effort: classes vary; also target common wrappers
+}
+
+.header {
+  background-image: repeating-linear-gradient(-12deg, transparent, transparent 10px, rgba($white, 0.02) 10px, rgba($white, 0.02) 11px) !important;
+  border-bottom: 1px solid rgba($orange, 0.2) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+/* end header pattern */
