@@ -1,93 +1,68 @@
-// src/app/about/layout.tsx
 import type { Metadata } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hvac-pro-template.vercel.app';
-const url      = `${BASE_URL}/about`;
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.keylinelocksmith.com';
+const url = `${BASE_URL}/about`;
 
 export const metadata: Metadata = {
-  title: "About Arctic Air HVAC — Waco TX Heating & Cooling Company Since 2010",
+  title: "About Keyline Locksmith — Waco TX Locksmith Company Since 2005",
   description:
-    "Meet the Arctic Air HVAC team. Locally owned and operated in Waco, Texas since 2010. NATE-certified technicians, TDLR-licensed, honest pricing, and a 1-year warranty on every repair. Serving Waco, Hewitt, Woodway, Robinson, and all of Central Texas.",
+    "Meet the Keyline Locksmith team. Locally owned and operated in Waco, Texas since 2005. licensed locksmiths, bonded & insured, honest pricing, and a 24/7 Emergency Response · Workmanship Guaranteed. Serving Waco, Hewitt, Woodway, Temple, Killeen, and all of Central Texas.",
   keywords: [
-    "about Arctic Air HVAC",
-    "Waco HVAC company",
-    "HVAC contractor Waco TX",
-    "locally owned HVAC Waco",
-    "NATE certified HVAC Waco Texas",
-    "Central Texas heating cooling company",
-    "HVAC company history Waco",
-    "Mike Hawkins Arctic Air HVAC",
+    "about Keyline Locksmith",
+    "Waco locksmith company",
+    "locksmith contractor Waco TX",
+    "locally owned locksmith Waco",
+    "Licensed locksmith Waco Texas",
+    "Luis Mercado Keyline Locksmith",
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "About Arctic Air HVAC — Waco TX Heating & Cooling Company Since 2010",
+    title: "About Keyline Locksmith — Waco TX Locksmith Company Since 2005",
     description:
-      "Locally owned and operated in Waco since 2010. NATE-certified, TDLR-licensed, flat-rate pricing, 1-year warranty on every repair. Serving all of Central Texas.",
+      "Locally owned locksmith company in Waco, TX. licensed, flat-rate pricing, 24/7 Emergency Response · Workmanship Guaranteed.",
     url,
-    siteName: "Arctic Air HVAC",
+    siteName: "Keyline Locksmith",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Arctic Air HVAC — Waco TX Since 2010",
-    description:
-      "Locally owned HVAC company in Waco, TX. NATE-certified, flat-rate pricing, 1-year repair warranty.",
+    title: "About Keyline Locksmith — Waco TX Since 2005",
+    description: "Locally owned locksmith company in Waco, TX. licensed, flat-rate pricing.",
   },
-  robots: { index: true, follow: true },
 };
 
-const localBusinessSchema = {
+const aboutSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
+  "@type": "Locksmith",
   "@id": `${BASE_URL}/#organization`,
-  name: "Arctic Air HVAC",
+  name: "Keyline Locksmith",
   url: BASE_URL,
-  telephone: "+12549001234",
-  email: "contact@arcticairhvac.com",
-  foundingDate: "2010",
+  telephone: "+12548202020",
+  email: "hello@keylinelocksmith.com",
+  foundingDate: "2005",
   founder: {
     "@type": "Person",
-    name: "Mike Hawkins",
-    jobTitle: "Owner & Master HVAC Technician",
+    name: "Luis Mercado",
+    jobTitle: "Owner & Lead Locksmith",
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "4521 Bosque Blvd",
+    streetAddress: "1201 Speight Ave",
     addressLocality: "Waco",
     addressRegion: "TX",
-    postalCode: "76710",
+    postalCode: "76706",
     addressCountry: "US",
   },
-  areaServed: [
-    { "@type": "City", name: "Waco",         containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Hewitt",       containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Woodway",      containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Robinson",     containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "China Spring", containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Temple",       containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Killeen",      containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Valley Mills", containedInPlace: { "@type": "State", name: "Texas" } },
-  ],
   sameAs: [
-    "https://www.facebook.com/arcticairhvac",
-  ],
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home",  item: BASE_URL },
-    { "@type": "ListItem", position: 2, name: "About", item: url },
+    "https://www.facebook.com/keylinelocksmith",
   ],
 };
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }} />
       {children}
     </>
   );
