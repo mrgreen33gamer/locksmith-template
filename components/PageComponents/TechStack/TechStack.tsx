@@ -4,8 +4,8 @@ import styles from './styles.module.scss';
 
 interface BrandItem {
   name:     string;
-  type:     string; // 'brand' | 'cert' | 'tool'
-  icon?:    string; // emoji or short abbreviation for display
+  type:     string;
+  icon?:    string;
 }
 
 interface BrandGroup {
@@ -21,43 +21,43 @@ interface TechStackProps {
 
 const DEFAULT_GROUPS: BrandGroup[] = [
   {
-    label: 'Equipment Brands We Service',
+    label: 'Hardware & Brands We Install',
     items: [
-      { name: 'Carrier',     type: 'brand', icon: '❄️' },
-      { name: 'Trane',       type: 'brand', icon: '❄️' },
-      { name: 'Lennox',      type: 'brand', icon: '❄️' },
-      { name: 'Rheem',       type: 'brand', icon: '❄️' },
-      { name: 'Goodman',     type: 'brand', icon: '❄️' },
-      { name: 'York',        type: 'brand', icon: '❄️' },
-      { name: 'Daikin',      type: 'brand', icon: '❄️' },
-      { name: 'American Standard', type: 'brand', icon: '❄️' },
+      { name: 'Schlage',        type: 'brand', icon: '🔑' },
+      { name: 'Kwikset',        type: 'brand', icon: '🔑' },
+      { name: 'Yale',           type: 'brand', icon: '🔑' },
+      { name: 'August',         type: 'brand', icon: '🔑' },
+      { name: 'Baldwin',        type: 'brand', icon: '🔑' },
+      { name: 'Medeco',         type: 'brand', icon: '🔑' },
+      { name: 'Mul-T-Lock',     type: 'brand', icon: '🔑' },
+      { name: 'Master Lock',    type: 'brand', icon: '🔑' },
     ],
   },
   {
     label: 'Certifications & Licenses',
     items: [
-      { name: 'NATE Certified',      type: 'cert', icon: '✓' },
-      { name: 'TDLR Licensed',       type: 'cert', icon: '✓' },
-      { name: 'EPA 608 Certified',   type: 'cert', icon: '✓' },
-      { name: 'Fully Insured',       type: 'cert', icon: '✓' },
+      { name: 'Licensed Locksmith',   type: 'cert', icon: '✓' },
+      { name: 'Bonded & Insured',     type: 'cert', icon: '✓' },
+      { name: 'ALOA Member Practices', type: 'cert', icon: '✓' },
+      { name: 'Workmanship Guaranteed', type: 'cert', icon: '✓' },
     ],
   },
   {
-    label: 'System Types',
+    label: 'Service Types',
     items: [
-      { name: 'Central AC',          type: 'tool', icon: '🌡️' },
-      { name: 'Heat Pumps',          type: 'tool', icon: '🌡️' },
-      { name: 'Mini-Splits',         type: 'tool', icon: '🌡️' },
-      { name: 'Gas Furnaces',        type: 'tool', icon: '🌡️' },
-      { name: 'Duct Systems',        type: 'tool', icon: '🌡️' },
-      { name: 'Air Handlers',        type: 'tool', icon: '🌡️' },
+      { name: 'Emergency Lockouts',   type: 'tool', icon: '🔐' },
+      { name: 'Rekey & Hardware',     type: 'tool', icon: '🔐' },
+      { name: 'Smart Locks',          type: 'tool', icon: '🔐' },
+      { name: 'Automotive Keys',      type: 'tool', icon: '🔐' },
+      { name: 'Access Control',       type: 'tool', icon: '🔐' },
+      { name: 'Safe Opening',         type: 'tool', icon: '🔐' },
     ],
   },
 ];
 
 const TechStack: React.FC<TechStackProps> = ({
-  title    = 'All Brands, All Systems',
-  subtitle = 'We service every major brand and system type — no brand-specific limitations, no excuses.',
+  title    = 'Licensed Work, Trusted Hardware',
+  subtitle = 'We install and service major lock brands — licensed locksmiths, no shortcuts on security or materials.',
   groups   = DEFAULT_GROUPS,
 }) => {
   return (

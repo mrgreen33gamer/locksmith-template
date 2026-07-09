@@ -10,8 +10,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleCheck, faExclamationTriangle, faArrowRight,
-  faFan, faFire, faWrench, faFilter, faThermometerHalf,
-  faWind, faBolt,
+  faWrench, faLink, faDoorOpen, faCogs, faClipboardList,
+  faBuilding, faBolt,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -22,13 +22,13 @@ interface Variant2Props {
 }
 
 const SERVICES = [
-  { icon: faFan,             label: 'AC Repair' },
-  { icon: faFire,            label: 'Heating / Furnace' },
-  { icon: faWrench,          label: 'New Installation' },
-  { icon: faFilter,          label: 'Duct Cleaning' },
-  { icon: faThermometerHalf, label: 'Maintenance' },
-  { icon: faWind,            label: 'Air Quality' },
-  { icon: faBolt,            label: 'Emergency' },
+  { icon: faWrench,        label: 'Emergency Lockout' },
+  { icon: faLink,          label: 'Rekey & Lock Change' },
+  { icon: faDoorOpen,      label: 'Smart Locks' },
+  { icon: faCogs,          label: 'Car Keys & Fobs' },
+  { icon: faClipboardList, label: 'Commercial Access' },
+  { icon: faBuilding,      label: 'Safe Services' },
+  { icon: faBolt,          label: 'Emergency' },
 ];
 
 export default function Variant2({ title, cityName, slug, spot, formVariant }: Variant2Props) {
@@ -95,7 +95,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
               <p className={styles.quoteText}>
                 "Flat price. Show up on time. Fix it right. That's all anyone ever wants — and that's exactly what we do."
               </p>
-              <span className={styles.quoteAttrib}>— Arctic Air HVAC, Waco TX</span>
+              <span className={styles.quoteAttrib}>— Keyline Locksmith, Waco TX</span>
 
               <div className={styles.panelStats}>
                 {[
@@ -111,7 +111,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
               </div>
 
               <div className={styles.panelBadges}>
-                {['Same-Day Available', '1-Year Warranty', 'No Contracts', 'NATE Certified'].map(b => (
+                {['Same-Day Available', '2-Year Warranty', 'No Contracts', 'Licensed Locksmith'].map(b => (
                   <span key={b} className={styles.panelBadge}>
                     <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                     {b}
@@ -140,7 +140,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
               ) : (
                 <motion.div key="form" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
                   <div className={styles.formHead}>
-                    <span className={styles.eyebrow}>Schedule Service · Free Estimate</span>
+                    <span className={styles.eyebrow}>Schedule Service · Get Help Now</span>
                     <h3 className={styles.formTitle}>{title}</h3>
                   </div>
 
@@ -200,7 +200,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
                     <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
                       {isSubmitting
                         ? <PulseLoader size={8} color="#0d1b2a" />
-                        : <><span>Book Free Estimate</span><FontAwesomeIcon icon={faArrowRight} /></>}
+                        : <><span>Book Get Help Now</span><FontAwesomeIcon icon={faArrowRight} /></>}
                     </button>
                   </form>
                 </motion.div>

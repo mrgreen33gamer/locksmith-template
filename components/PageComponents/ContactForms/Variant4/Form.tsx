@@ -1,6 +1,6 @@
 // components/PageComponents/ContactForms/Variant4/Form.tsx
-// FIXED: Added useTrackEvent — fires:
-//   - 'click'       when the user advances from Step 1 → Step 2 (service selected)
+// FIXED: Added useTrackEvent â€” fires:
+//   - 'click'       when the user advances from Step 1 â†’ Step 2 (service selected)
 //   - 'form_submit' after a successful submission on Step 2
 //   Both use 'spot' as section for per-placement attribution in the admin dashboard.
 'use client';
@@ -11,7 +11,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleCheck, faExclamationTriangle, faArrowRight, faArrowLeft,
-  faFan, faFire, faWrench, faFilter, faThermometerHalf, faWind, faBolt,
+  faKey, faLock, faMobileScreen, faCar, faBuildingShield, faVault, faBolt,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -22,16 +22,16 @@ interface Variant4Props {
 }
 
 const SERVICES = [
-  { icon: faFan,             label: 'AC Repair',        sub: 'System not cooling, strange noises' },
-  { icon: faFire,            label: 'Heating / Furnace', sub: 'Heat not working, furnace issues' },
-  { icon: faWrench,          label: 'New Installation',  sub: 'Replace or add a new system' },
-  { icon: faFilter,          label: 'Duct Cleaning',     sub: 'Improve airflow & air quality' },
-  { icon: faThermometerHalf, label: 'Maintenance',       sub: 'Tune-up, inspection, seasonal' },
-  { icon: faWind,            label: 'Air Quality',       sub: 'Filters, purifiers, humidity' },
-  { icon: faBolt,            label: 'Emergency',         sub: 'System down, urgent repair needed' },
+  { icon: faKey,           label: 'Emergency Lockout',     sub: 'Home, office, or vehicle' },
+  { icon: faLock,          label: 'Rekey & Lock Change',   sub: 'New keys, same or new locks' },
+  { icon: faMobileScreen,  label: 'Smart Locks',           sub: 'Keypad & app-enabled installs' },
+  { icon: faCar,           label: 'Car Keys & Fobs',       sub: 'Cut, program, replace fobs' },
+  { icon: faBuildingShield,label: 'Commercial Access',     sub: 'Hardware & access control' },
+  { icon: faVault,         label: 'Safe Services',         sub: 'Open, rekey, relocate safes' },
+  { icon: faBolt,          label: 'Emergency / 24/7',      sub: 'Urgent lockout or security' },
 ];
 
-const BUDGET_LABELS = ['Under $500', '$500–$1,500', '$1,500–$5,000', '$5,000–$10,000', '$10,000+'];
+const BUDGET_LABELS = ['Under $500', '$500â€“$1,500', '$1,500â€“$5,000', '$5,000â€“$10,000', '$10,000+'];
 
 const slideVariants = {
   enter:  (dir: number) => ({ x: dir > 0 ? 50 : -50, opacity: 0 }),
@@ -56,7 +56,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
     setError(''); setDir(1); setStep(2);
     trackEvent({
       eventType:    'click',
-      elementLabel: `Variant4 Continue — ${selectedService}`,
+      elementLabel: `Variant4 Continue â€” ${selectedService}`,
       section:      spot,
       serviceType:  selectedService,
     });
@@ -107,7 +107,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
           <motion.div className={styles.header}
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <span className={styles.eyebrow}>Free Estimate · {cityName}, TX</span>
+            <span className={styles.eyebrow}>Get Help Now Â· {cityName}, TX</span>
             <h2 className={styles.title}>{title}</h2>
           </motion.div>
         )}
@@ -143,7 +143,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
                   </div>
                   <h3 className={styles.successTitle}>You're All Set!</h3>
                   <p className={styles.successText}>
-                    A licensed Arctic Air tech will reach out about your <strong>{selectedService}</strong> service.
+                    A licensed Keyline Locksmith tech will reach out about your <strong>{selectedService}</strong> service.
                   </p>
                   <div className={styles.successSummary}>
                     <div className={styles.summaryRow}><span>Service</span><span>{selectedService}</span></div>

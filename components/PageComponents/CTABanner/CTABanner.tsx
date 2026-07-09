@@ -15,11 +15,11 @@ interface CTABannerProps {
 }
 
 export default function CTABanner({
-  headline      = "Ready to Stay Comfortable Year-Round?",
-  subline   = "Same-day appointments available. Flat-rate pricing — no hidden fees. Call now or grab a free estimate online.",
-  primaryText  = "Call (254) 900-1234",
-  primaryLink   = "tel:+12549001234",
-  secondaryText = "Free Estimate",
+  headline      = "Locked Out? Need Keys? We're Ready Right Now.",
+  subline   = "24/7 emergency response available. Flat-rate pricing — no hidden fees. Call now or book online.",
+  primaryText  = "Call (254) 820-2020",
+  primaryLink   = "tel:+12548202020",
+  secondaryText = "Get Help Now",
   secondaryLink  = "/contact",
   spot = "CTABanner",
 }: CTABannerProps) {
@@ -27,10 +27,8 @@ export default function CTABanner({
 
   return (
     <section className={styles.banner} aria-label="Call to action">
-      {/* Decorative grid lines */}
       <div className={styles.grid} aria-hidden="true" />
 
-      {/* Rotating snowflake bg */}
       <motion.div
         className={styles.bgFlake}
         animate={{ rotate: 360 }}
@@ -57,7 +55,7 @@ export default function CTABanner({
         >
           <span className={styles.eyebrow}>
             <span className={styles.eyebrowDot} />
-            Central Texas HVAC Experts Since 2010
+            Central Texas Locksmith Experts Since 2005
           </span>
           <h2 className={styles.heading}>{headline}</h2>
           <p className={styles.sub}>{subline}</p>
@@ -99,7 +97,7 @@ export default function CTABanner({
             </span>
             <span className={styles.badge}>
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-              1-Yr Warranty
+              Workmanship Guaranteed
             </span>
             <span className={styles.badge}>
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
