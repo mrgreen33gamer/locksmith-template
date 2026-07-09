@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-// Arctic Air HVAC — root layout
+// Keyline Locksmith — root layout
 //
 // MOBILE / SAFE-AREA FIX:
 //   Added a Next.js 14+ `viewport` export with:
@@ -11,8 +11,6 @@
 //                                white bars on top and bottom on iPhone.
 //     - themeColor: '#0d1b2a' → tints the iOS Safari URL bar / Android
 //                                status bar to match the brand obsidian dark.
-//                                Two values supplied so Safari can pick the
-//                                right one for light vs dark mode.
 //     - colorScheme: 'dark'   → tells the browser to render its own UI chrome
 //                                (form pickers, scrollbars, etc.) in dark mode.
 //
@@ -60,21 +58,13 @@ const aBeeZee = ABeeZee({
 
 const isProduction = process.env.NODE_ENV === "production";
 const BASE_URL = isProduction
-  ? "https://www.arcticairhvac.com"
+  ? "https://www.keylinelocksmith.com"
   : "http://localhost:3000";
 
-// ── VIEWPORT ──────────────────────────────────────────────────────────────────
-// Next.js 14+ moved viewport / themeColor / colorScheme out of `metadata` and
-// into a separate `viewport` export. The `viewportFit: 'cover'` is the single
-// most important line in this file for the notch / home-indicator fix.
 export const viewport: Viewport = {
   width:        "device-width",
   initialScale: 1,
   viewportFit:  "cover",
-  // Two themeColor entries so iOS Safari can pick the right one when the user
-  // toggles light/dark mode. Both are obsidian dark to match the brand bg
-  // applied to <body> in globals.css. Adjust if you want a lighter Safari
-  // chrome tint for light-mode users.
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#0d1b2a" },
     { media: "(prefers-color-scheme: dark)",  color: "#0d1b2a" },
@@ -85,42 +75,42 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Arctic Air HVAC | AC Repair, Heating & Installation — Waco, TX",
-    template: "%s | Arctic Air HVAC",
+    default: "Keyline Locksmith | 24/7 Lockouts, Locks, Keys & Security — Waco, TX",
+    template: "%s | Keyline Locksmith",
   },
   description:
-    "Arctic Air HVAC is a Waco, TX heating and cooling company offering AC repair, furnace service, new system installation, duct cleaning, and maintenance plans for Central Texas homes and businesses. Licensed, local, no contracts.",
+    "Keyline Locksmith is a Waco, TX locksmith offering emergency lockouts, rekey & lock change, smart lock installation, car keys & fobs, commercial access control, and safe services for Central Texas homes and businesses. Licensed, bonded & insured.",
   keywords: [
-    "Arctic Air HVAC",
-    "HVAC company Waco TX",
-    "AC repair Waco Texas",
-    "air conditioning installation Waco",
-    "furnace repair Central Texas",
-    "heating and cooling Waco TX",
-    "HVAC contractor Hewitt TX",
-    "duct cleaning Waco",
-    "emergency AC repair Waco",
+    "Keyline Locksmith",
+    "locksmith Waco TX",
+    "emergency lockout Waco Texas",
+    "rekey locks Waco",
+    "smart lock installation Waco",
+    "car key fob programming Central Texas",
+    "commercial locksmith Waco TX",
+    "24/7 locksmith Waco",
+    "safe opening Waco",
   ],
-  authors: [{ name: "Arctic Air HVAC", url: BASE_URL }],
-  creator: "Arctic Air HVAC",
-  publisher: "Arctic Air HVAC",
+  authors: [{ name: "Keyline Locksmith", url: BASE_URL }],
+  creator: "Keyline Locksmith",
+  publisher: "Keyline Locksmith",
   icons: {
     icon: [`${BASE_URL}/logos/favicon.ico?v=1`],
     apple: [`${BASE_URL}/logos/apple-touch-icon.png?v=1`],
     shortcut: [`${BASE_URL}/logos/apple-touch-icon.png?v=1`],
   },
   openGraph: {
-    title: "Arctic Air HVAC | AC Repair, Heating & Installation — Waco, TX",
+    title: "Keyline Locksmith | 24/7 Lockouts, Locks, Keys & Security — Waco, TX",
     description:
-      "Waco-based HVAC company for AC repair, furnace service, new installations, and maintenance plans across Central Texas. Licensed & insured. No contracts.",
+      "Waco-based locksmith for emergency lockouts, rekey, smart locks, car keys, commercial access, and safes across Central Texas. Licensed, bonded & insured. 24/7 response.",
     url: BASE_URL,
-    siteName: "Arctic Air HVAC",
+    siteName: "Keyline Locksmith",
     images: [
       {
-        url: `${BASE_URL}/logos/arctic-air-banner.png?v=1`,
+        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
         width: 1200,
         height: 630,
-        alt: "Arctic Air HVAC — Waco TX Air Conditioning & Heating",
+        alt: "Keyline Locksmith — Waco TX 24/7 Locksmith",
       },
     ],
     locale: "en_US",
@@ -128,10 +118,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arctic Air HVAC | Waco TX Heating & Cooling",
+    title: "Keyline Locksmith | Waco TX 24/7 Locksmith",
     description:
-      "AC repair, heating service, new installations & maintenance plans for Central Texas. Licensed & insured — no contracts.",
-    images: [`${BASE_URL}/logos/arctic-air-banner.png?v=1`],
+      "Emergency lockouts, rekey, smart locks, car keys & commercial access for Central Texas. Licensed, bonded & insured — workmanship guaranteed.",
+    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
   },
   robots: {
     index: true,
@@ -155,27 +145,27 @@ const ratingValue = "5.0";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
+  "@type": "Locksmith",
   "@id": `${BASE_URL}/#organization`,
-  name: "Arctic Air HVAC",
-  alternateName: "Arctic Air Heating & Cooling",
+  name: "Keyline Locksmith",
+  alternateName: "Keyline Locksmith Waco",
   description:
-    "Residential and commercial HVAC services in Waco and Central Texas — AC repair, heating, new installations, duct cleaning, and maintenance plans. Licensed, insured, no contracts.",
+    "Residential and commercial locksmith services in Waco and Central Texas — emergency lockouts, rekey & lock change, smart lock installation, car keys & fobs, commercial access control, and safe services. Licensed locksmiths, bonded & insured, 24/7 Emergency Response · Workmanship Guaranteed.",
   url: BASE_URL,
-  telephone: "+12549001234",
-  email: "contact@arcticairhvac.com",
-  foundingDate: "2010",
+  telephone: "+12548202020",
+  email: "hello@keylinelocksmith.com",
+  foundingDate: "2005",
   founder: {
     "@type": "Person",
-    name: "Mike Hawkins",
-    jobTitle: "Owner & Master HVAC Technician",
+    name: "Luis Mercado",
+    jobTitle: "Owner & Lead Locksmith",
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "4521 Bosque Blvd",
+    streetAddress: "1201 Speight Ave",
     addressLocality: "Waco",
     addressRegion: "TX",
-    postalCode: "76710",
+    postalCode: "76706",
     addressCountry: "US",
   },
   geo: {
@@ -186,39 +176,31 @@ const localBusinessSchema = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "07:00",
-      closes: "18:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Saturday"],
-      opens: "08:00",
-      closes: "14:00",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "23:59",
     },
   ],
   areaServed: [
     { "@type": "City", name: "Waco",        containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Hewitt",       containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Woodway",      containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Robinson",     containedInPlace: { "@type": "State", name: "Texas" } },
+    { "@type": "City", name: "Bellmead",     containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "China Spring", containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Hillsboro",    containedInPlace: { "@type": "State", name: "Texas" } },
+    { "@type": "City", name: "McGregor",     containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Temple",       containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Killeen",      containedInPlace: { "@type": "State", name: "Texas" } },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "HVAC Services",
+    name: "Locksmith Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Repair" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Installation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Heating Repair" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Furnace Installation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Duct Cleaning" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "HVAC Maintenance Plans" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Indoor Air Quality" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Smart Thermostat Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Emergency Lockout" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Rekey & Lock Change" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Smart Lock Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Car Keys & Fobs" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Access Control" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Safe Services" } },
     ],
   },
   aggregateRating: {
@@ -232,7 +214,7 @@ const localBusinessSchema = {
   currenciesAccepted: "USD",
   paymentAccepted: "Cash, Credit Card, Check, Financing",
   sameAs: [
-    "https://www.facebook.com/arcticairhvac",
+    "https://www.facebook.com/keylinelocksmith",
     "https://www.google.com/maps/?cid=placeholder",
   ],
 };
@@ -254,12 +236,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* ConditionalShell shows Header/Footer only on non-admin pages */}
         <ConditionalShell>
           <Header />
         </ConditionalShell>
 
-        <NextTopLoader color="#f97316" showSpinner={false} />
+        <NextTopLoader color="#0f766e" showSpinner={false} />
 
         <Suspense fallback={null}>
           <Analytics />
@@ -275,10 +256,10 @@ export default function RootLayout({
                   alignItems: "center",
                   width: "100%",
                   height: "100vh",
-                  background: "#0a130a",
+                  background: "#0d1b2a",
                 }}
               >
-                <PulseLoader size={50} color="#f97316" />
+                <PulseLoader size={50} color="#0f766e" />
               </div>
             }
           >
@@ -294,7 +275,6 @@ export default function RootLayout({
           <CookieBanner />
         </Suspense>
 
-        {/* Footer only on non-admin pages */}
         <ConditionalShell>
           <Footer />
         </ConditionalShell>

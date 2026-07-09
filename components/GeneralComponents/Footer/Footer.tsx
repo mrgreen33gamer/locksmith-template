@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLocationDot, faPhone, faEnvelope,
-  faShieldHalved, faWrench, faClock, faSnowflake,
+  faShieldHalved, faKey, faClock, faBolt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import styles from './styles.module.scss';
@@ -19,30 +19,30 @@ const NAV_LINKS = [
 ];
 
 const SERVICE_LINKS = [
-  { href: '/services/ac-repair',          label: 'AC Repair' },
-  { href: '/services/heating',            label: 'Heating Service' },
-  { href: '/services/installation',       label: 'New Installation' },
-  { href: '/services/maintenance',        label: 'Maintenance Plans' },
-  { href: '/services/duct-cleaning',      label: 'Duct Cleaning' },
-  { href: '/services/indoor-air-quality', label: 'Indoor Air Quality' },
+  { href: '/services/emergency-lockout',   label: 'Emergency Lockout' },
+  { href: '/services/rekey-lock-change',   label: 'Rekey & Lock Change' },
+  { href: '/services/smart-locks',         label: 'Smart Lock Installation' },
+  { href: '/services/car-keys',            label: 'Car Keys & Fobs' },
+  { href: '/services/commercial-access',   label: 'Commercial Access Control' },
+  { href: '/services/safe-services',       label: 'Safe Services' },
 ];
 
 const LOCAL_AREAS = [
   'Waco, TX', 'Hewitt, TX', 'Woodway, TX',
-  'Robinson, TX', 'China Spring, TX', 'Temple, TX',
-  'Killeen, TX', 'Hillsboro, TX',
+  'McGregor, TX', 'China Spring, TX', 'Temple, TX',
+  'Killeen, TX', 'Bellmead, TX',
 ];
 
 const TRUST_ITEMS = [
   { icon: faShieldHalved, label: 'Licensed & Insured' },
-  { icon: faWrench,       label: 'NATE Certified' },
-  { icon: faClock,        label: 'Same-Day Service' },
-  { icon: faSnowflake,    label: '1-Yr Warranty' },
+  { icon: faKey,          label: 'Licensed Locksmith' },
+  { icon: faClock,        label: '24/7 Emergency' },
+  { icon: faBolt,         label: 'Workmanship Guaranteed' },
 ];
 
 const SOCIALS = [
-  { href: 'https://facebook.com/arcticairhvac', icon: faFacebookF, label: 'Facebook' },
-  { href: 'https://g.page/r/arcticairhvac',     icon: faGoogle,    label: 'Google' },
+  { href: 'https://facebook.com/keylinelocksmith', icon: faFacebookF, label: 'Facebook' },
+  { href: 'https://g.page/r/keylinelocksmith',     icon: faGoogle,    label: 'Google' },
 ];
 
 export default function Footer() {
@@ -51,7 +51,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
 
-      {/* ── TRUST STRIP ── */}
       <div className={styles.trustStrip}>
         <div className={styles.trustInner}>
           {TRUST_ITEMS.map(({ icon, label }) => (
@@ -65,52 +64,47 @@ export default function Footer() {
             className={styles.trustCta}
             onClick={() => trackEvent({ eventType: 'click', elementLabel: 'Book Now', section: 'Footer-Trust' })}
           >
-            Book a Tech Today →
+            Call a Locksmith Today →
           </Link>
         </div>
       </div>
 
-      {/* ── MAIN BODY ── */}
       <div className={styles.body}>
         <div className={styles.inner}>
 
-          {/* Col 1 — Brand */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
               <span className={styles.logoMark}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="2" x2="12" y2="22"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <polyline points="8 6 12 2 16 6"/>
-                  <polyline points="8 18 12 22 16 18"/>
-                  <polyline points="6 8 2 12 6 16"/>
-                  <polyline points="18 8 22 12 18 16"/>
+                  <circle cx="8" cy="15" r="4"/>
+                  <path d="M12 15h9l-2-2"/>
+                  <path d="M18 15v-2"/>
                 </svg>
               </span>
               <div className={styles.logoText}>
-                <span className={styles.logoName}>Arctic Air HVAC</span>
+                <span className={styles.logoName}>Keyline Locksmith</span>
                 <span className={styles.logoSub}>Waco, Texas</span>
               </div>
             </Link>
 
             <p className={styles.tagline}>
-              Flat-rate pricing. Same-day service. Zero contracts — ever. Serving Central Texas homeowners since 2010.
+              Flat-rate pricing. 24/7 emergency response. Zero contracts — ever. Serving Central Texas homes and businesses since 2005.
             </p>
 
             <div className={styles.contactBlock}>
-              <a href="tel:+12549001234" className={styles.phoneLink}
+              <a href="tel:+12548202020" className={styles.phoneLink}
                 onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Footer Phone', section: 'Footer-Brand' })}>
                 <FontAwesomeIcon icon={faPhone} />
-                (254) 900-1234
+                (254) 820-2020
               </a>
-              <a href="mailto:contact@arcticairhvac.com" className={styles.emailLink}
+              <a href="mailto:hello@keylinelocksmith.com" className={styles.emailLink}
                 onClick={() => trackEvent({ eventType: 'email_click', elementLabel: 'Footer Email', section: 'Footer-Brand' })}>
                 <FontAwesomeIcon icon={faEnvelope} />
-                contact@arcticairhvac.com
+                hello@keylinelocksmith.com
               </a>
               <span className={styles.addressLine}>
                 <FontAwesomeIcon icon={faLocationDot} />
-                4521 Bosque Blvd, Waco, TX 76710
+                1201 Speight Ave, Waco, TX 76706
               </span>
             </div>
 
@@ -125,7 +119,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2 — Nav */}
           <div className={styles.col}>
             <span className={styles.colHead}>Company</span>
             <ul className={styles.linkList}>
@@ -140,7 +133,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 — Services */}
           <div className={styles.col}>
             <span className={styles.colHead}>Our Services</span>
             <ul className={styles.linkList}>
@@ -155,7 +147,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4 — Service Areas */}
           <div className={styles.col}>
             <span className={styles.colHead}>Service Areas</span>
             <ul className={styles.areaList}>
@@ -172,13 +163,12 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── BOTTOM BAR ── */}
       <div className={styles.bottomBar}>
         <div className={styles.bottomInner}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} Arctic Air HVAC. All Rights Reserved. | TDLR License #XXXXXXXX
+            &copy; {new Date().getFullYear()} Keyline Locksmith. All Rights Reserved. | Licensed Locksmith · Bonded & Insured
           </p>
-          <a href="tel:+12549001234" className={styles.emergencyBtn}
+          <a href="tel:+12548202020" className={styles.emergencyBtn}
             onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: '24/7 Emergency', section: 'Footer-Bottom' })}>
             <span className={styles.emergencyDot} />
             24/7 Emergency Line
