@@ -63,14 +63,14 @@ export default function HomePage() {
       title: "Commercial Access Control",
       body: "Door hardware, credentials, and access updates for offices, retail, and multi-unit properties — after-hours options available.",
       link: "/services/commercial-access",
-      image: "/pages/home/services/service-1.jpg",
+      image: "/pages/home/welcome/before.jpg",
     },
     {
       icon: faVault,
       title: "Safe Services",
       body: "Safe opening, combination changes, and relocation help for home and business safes — careful work that prioritizes your contents.",
       link: "/services/safe-services",
-      image: "/pages/home/services/service-2.jpg",
+      image: "/pages/home/welcome/after.jpg",
     },
   ];
 

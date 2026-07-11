@@ -115,7 +115,7 @@ export const metadata: Metadata = {
     siteName: "Keyline Locksmith",
     images: [
       {
-        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`,
         width: 1200,
         height: 630,
         alt: "Keyline Locksmith — Waco TX 24/7 Locksmith",
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
     title: "Keyline Locksmith | Waco TX 24/7 Locksmith",
     description:
       "Emergency lockouts, rekey, smart locks, car keys & commercial access for Central Texas. Licensed, bonded & insured — workmanship guaranteed.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
   robots: {
     index: true,
