@@ -1,156 +1,27 @@
-// Locksmith Hero C — Night city blocks + key hub + amber response ring
+// Locksmith Hero — Keyline (security night ops)
+// Photographic parallax stage + an authentic door-lock card replaces the
+// abstract night-city / key-hub map schematic. Real imagery, amber detailing.
+// Photos live in /public/pages/home/welcome and are wired into the hero.
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-function ServiceAreaMap({
-  mapCenterLabel,
-  mapPins,
-  coverageLabel,
-}: {
-  mapCenterLabel: string;
-  mapPins: Array<{ label: string; x: number; y: number }>;
-  coverageLabel?: string;
-}) {
-  return (
-    <div
-      className={`${styles.mapCard} ${styles.nightMap}`}
-      role="img"
-      aria-label={`Service area map centered on ${mapCenterLabel}`}
-    >
-      <svg
-        className={styles.mapSvg}
-        viewBox="0 0 400 320"
-        preserveAspectRatio="xMidYMid slice"
-        aria-hidden="true"
-      >
-        <defs>
-          <radialGradient id="lockNightGlow" cx="50%" cy="48%" r="55%">
-            <stop offset="0%" stopColor="rgba(234, 179, 8, 0.16)" />
-            <stop offset="50%" stopColor="rgba(234, 179, 8, 0.05)" />
-            <stop offset="100%" stopColor="rgba(0, 0, 0, 0)" />
-          </radialGradient>
-          <linearGradient id="lockBlockLit" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
-            <stop offset="100%" stopColor="rgba(255,255,255,0.015)" />
-          </linearGradient>
-        </defs>
-
-        {/* Deep night wash */}
-        <rect width="400" height="320" fill="rgba(8, 10, 18, 0.55)" />
-        <rect width="400" height="320" fill="url(#lockNightGlow)" />
-
-        {/* City street grid */}
-        <g stroke="rgba(255,255,255,0.07)" strokeWidth="1.5" fill="none">
-          <line x1="0" y1="70" x2="400" y2="70" />
-          <line x1="0" y1="130" x2="400" y2="130" />
-          <line x1="0" y1="190" x2="400" y2="190" />
-          <line x1="0" y1="250" x2="400" y2="250" />
-          <line x1="60" y1="0" x2="60" y2="320" />
-          <line x1="140" y1="0" x2="140" y2="320" />
-          <line x1="220" y1="0" x2="220" y2="320" />
-          <line x1="300" y1="0" x2="300" y2="320" />
-          <line x1="360" y1="0" x2="360" y2="320" />
-        </g>
-
-        {/* Building blocks */}
-        <rect x="72" y="82" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.08)" />
-        <rect x="152" y="82" width="56" height="38" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" />
-        <rect x="232" y="82" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.08)" />
-        <rect x="72" y="142" width="56" height="38" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" />
-        <rect x="152" y="142" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(234,179,8,0.15)" />
-        <rect x="232" y="142" width="56" height="38" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" />
-        <rect x="312" y="142" width="40" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.07)" />
-        <rect x="72" y="202" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.07)" />
-        <rect x="152" y="202" width="56" height="38" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" />
-        <rect x="232" y="202" width="56" height="38" fill="url(#lockBlockLit)" stroke="rgba(255,255,255,0.07)" />
-
-        {/* Window dots on blocks */}
-        <g fill="rgba(234, 179, 8, 0.35)">
-          <circle cx="86" cy="94" r="1.5" />
-          <circle cx="98" cy="94" r="1.5" />
-          <circle cx="110" cy="94" r="1.5" />
-          <circle cx="86" cy="106" r="1.5" />
-          <circle cx="98" cy="106" r="1.5" />
-          <circle cx="246" cy="154" r="1.5" />
-          <circle cx="258" cy="154" r="1.5" />
-          <circle cx="270" cy="154" r="1.5" />
-          <circle cx="86" cy="214" r="1.5" />
-          <circle cx="98" cy="214" r="1.5" />
-          <circle cx="246" cy="214" r="1.5" />
-          <circle cx="258" cy="214" r="1.5" />
-        </g>
-
-        {/* Amber response ring (static SVG) */}
-        <circle
-          cx="200"
-          cy="160"
-          r="78"
-          fill="none"
-          stroke="rgba(234, 179, 8, 0.28)"
-          strokeWidth="1.5"
-          strokeDasharray="6 5"
-          className={styles.responseRingSvg}
-        />
-        <circle
-          cx="200"
-          cy="160"
-          r="52"
-          fill="none"
-          stroke="rgba(234, 179, 8, 0.4)"
-          strokeWidth="1.25"
-        />
-      </svg>
-
-      {/* Amber response rings (CSS pulse) */}
-      <div className={`${styles.rings} ${styles.amberRings}`} aria-hidden="true">
-        <span className={`${styles.ring} ${styles.ring1}`} />
-        <span className={`${styles.ring} ${styles.ring2}`} />
-        <span className={`${styles.ring} ${styles.ring3}`} />
-      </div>
-
-      {/* Key-shaped hub pin */}
-      <div className={`${styles.centerPin} ${styles.keyHub}`}>
-        <div className={styles.keyPinIcon} aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <circle cx="9" cy="9" r="4.5" stroke="currentColor" strokeWidth="2" />
-            <path
-              d="M12.5 11.5 L20 19 M17 16 L20 16 L20 19"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <span className={styles.centerLabel}>{mapCenterLabel}</span>
-      </div>
-
-      {mapPins.map((pin) => (
-        <div
-          key={`${pin.label}-${pin.x}-${pin.y}`}
-          className={styles.satPin}
-          style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
-        >
-          <span className={`${styles.satDot} ${styles.amberDot}`} />
-          <span className={styles.satLabel}>{pin.label}</span>
-        </div>
-      ))}
-
-      {coverageLabel && (
-        <div className={`${styles.coverageBadge} ${styles.amberBadge}`}>
-          <span className={`${styles.coverageDot} ${styles.amberDot}`} />
-          {coverageLabel}
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function WelcomePage() {
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked parallax on the background photo. Disabled under reduced-motion.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduceMotion ? '0%' : '16%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, reduceMotion ? 1.08 : 1.16]);
+
   const badgeText = "Waco's Most Trusted Locksmith — Since 2005";
   const headlineLines = ['Locked Out.', 'Keys Lost.'];
   const headlineAccent = 'Keyline Locksmith.';
@@ -165,17 +36,26 @@ export default function WelcomePage() {
     '20+ Yrs Local',
     'Workmanship Guaranteed',
   ];
-  const mapCenterLabel = 'Service HQ';
-  const mapPins = [
-    { label: 'Waco', x: 42, y: 48 },
-    { label: 'Temple', x: 68, y: 62 },
-    { label: 'Killeen', x: 58, y: 72 },
-  ];
-  const coverageLabel = 'Central Texas coverage';
 
   return (
-    <section className={styles.hero} aria-label="Hero">
-      <div className={styles.shard} aria-hidden="true" />
+    <section ref={heroRef} className={styles.hero} aria-label="Hero">
+      {/* Photographic parallax background — real door-lock security scene */}
+      <motion.div
+        className={styles.bgLayer}
+        style={{ y: bgY, scale: bgScale }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/pages/home/welcome/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </motion.div>
+      {/* Obsidian + amber scrim keeps the headline legible and on-brand */}
+      <div className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.layout}>
         <div className={styles.content}>
@@ -241,17 +121,38 @@ export default function WelcomePage() {
           </motion.div>
         </div>
 
+        {/* Authentic door-lock photo — the ownable image, framed as a spec card */}
         <motion.div
           className={styles.visual}
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.28, ease: 'easeOut' }}
         >
-          <ServiceAreaMap
-            mapCenterLabel={mapCenterLabel}
-            mapPins={mapPins}
-            coverageLabel={coverageLabel}
-          />
+          <div className={styles.photoCard}>
+            <Image
+              src="/pages/home/welcome/hero-lock.jpg"
+              alt="Locksmith rekeying a residential door lock with a set of keys in Waco, TX"
+              fill
+              priority
+              sizes="(max-width: 960px) 88vw, 460px"
+              className={styles.photo}
+            />
+            <div className={styles.photoGlaze} aria-hidden="true" />
+
+            <div className={styles.photoBadge}>
+              <span className={styles.photoBadgeDot} />
+              Licensed Locksmith · On-Site
+            </div>
+
+            <div className={styles.specCard}>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> Flat-rate pricing
+              </span>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> Licensed &amp; bonded
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
