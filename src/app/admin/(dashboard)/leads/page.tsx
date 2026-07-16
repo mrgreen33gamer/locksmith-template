@@ -45,7 +45,7 @@ const RANGE_LABEL: Record<Range, string> = {
   '24h': '24h', '7d': '7d', '30d': '30d', '90d': '90d',
 };
 const STATUS_COLORS: Record<string, string> = {
-  new: '#eab308',
+  new: '#4338ca',
   contacted: '#378add',
   qualified: '#d97706',
   converted: '#0d9488',
@@ -134,7 +134,7 @@ export default function AdminLeadsPage() {
                   borderRadius: 0,
                   border: 'none',
                   borderRight: '1px solid var(--admin-border-2)',
-                  background: r === range ? '#eab308' : 'transparent',
+                  background: r === range ? '#4338ca' : 'transparent',
                   color: r === range ? '#fff' : undefined,
                 }}
               >
@@ -161,7 +161,7 @@ export default function AdminLeadsPage() {
             {range === '24h' ? 'Leads Per Hour' : 'Leads Per Day'} — {RANGE_LABEL[range]}
           </p>
           {tableData.leadsPerDay?.length ? (
-            <LineChart data={tableData.leadsPerDay} label="Leads" color="#eab308" height={200} />
+            <LineChart data={tableData.leadsPerDay} label="Leads" color="#4338ca" height={200} />
           ) : (
             <p className={styles.empty}>{loading ? 'Loading…' : 'No leads yet.'}</p>
           )}

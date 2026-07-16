@@ -4,11 +4,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 @use 'sass:color';
 
-$orange:      #eab308;
+$orange:      #4338ca;
 $lightorange: #fde047;
 $darkorange:  #a16207;
 $obsidian:    #09090b;
-$blue:        #eab308;
+$blue:        #4338ca;
 $white:       #ffffff;
 $offwhite:    #fafafa;
 $slate:       #3d342c;
@@ -81,9 +81,9 @@ $radius-pill: 2px;
   --admin-nav-bg:          #09090b;
   --admin-skeleton:        rgba(245, 239, 232, 0.05);
   --admin-skeleton-shine:  rgba(234, 179, 8, 0.12);
-  --admin-rail:            #eab308;
-  --admin-accent:          #eab308;
-  --admin-cool:            #eab308;
+  --admin-rail:            #4338ca;
+  --admin-accent:          #4338ca;
+  --admin-cool:            #4338ca;
   --admin-grid-line:       rgba(234, 179, 8, 0.04);
 
   min-height: 100vh;
@@ -119,7 +119,7 @@ $radius-pill: 2px;
     --admin-skeleton-shine:  rgba(234, 179, 8, 0.1);
     --admin-rail:            #a16207;
     --admin-accent:          #a16207;
-    --admin-cool:            #eab308;
+    --admin-cool:            #4338ca;
     --admin-grid-line:       rgba(26, 21, 18, 0.05);
     color-scheme: light;
   }
